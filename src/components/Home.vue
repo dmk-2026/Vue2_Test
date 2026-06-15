@@ -19,7 +19,7 @@ export default {
     }
   },
   mounted() {
-    console.log('Home mounted')
+    console.log('process ---', process.env)
     if (!this.loginStatus) {
         this.$store.commit('login')
     }

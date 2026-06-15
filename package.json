@@ -4,11 +4,12 @@
   "description": "Vue2 + Webpack project",
   "main": "index.js",
   "scripts": {
-    "dev": "webpack-dev-server --mode development --open",
+    "dev": "cross-env MY_ENV=dev webpack-dev-server --mode development --open",
     "build": "webpack --mode production"
   },
   "dependencies": {
     "core-js": "^3.36.0",
+    "cross-env": "^10.1.0",
     "element-ui": "^2.15.14",
     "vue": "^2.7.14",
     "vue-router": "^3.6.5",
