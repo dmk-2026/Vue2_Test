@@ -6,8 +6,7 @@ import store from './store'
 import App from './App.vue'
 
 Vue.use(ElementUI)
-// Vue.use(store)
-Vue.config.productionTip = false
+// Vue.config.productionTip = false
 
 new Vue({
     store,

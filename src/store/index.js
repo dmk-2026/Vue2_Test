@@ -1,9 +1,13 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
+import delay from './delay'
 
 Vue.use(Vuex)
 
 const store = new Vuex.Store({
+    modules: {
+        delay
+    },
     state: {
         count: 0,
         loginStatus: false
@@ -18,12 +22,18 @@ const store = new Vuex.Store({
         },
         logout(state) {
             state.loginStatus = false
+        },
+        delayCheck(state) {
+            setTimeout(() => {
+                console.log('执行延迟检查操作 ---')
+                state.delayCheckStatus = false
+            }, 1000)
         }
     },
     actions: {
-        delayIncrement(context) {
+        delayCheck(context) {
             setTimeout(() => {
-                context.commit('increment')
+                context.commit('delayCheck')
             }, 1000)
         }
     }

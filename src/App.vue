@@ -7,18 +7,34 @@
       <router-link to="/">Home</router-link>
       <router-link :to="{name: 'foo'}">Foo</router-link>
       <router-link :to="{path: '/video', name: 'video', params: {id: count}}">Video</router-link>
-      <router-view></router-view>
+      <div><router-view></router-view></div>
+      <!-- <router-view></router-view> -->
     </nav>
   </div>
 </template>
 
 <script>
+import bus from './tools/bus.js'
 export default {
   name: 'App',
+  provide() {
+    return {
+      reactiveSecret: this
+    }
+  },
   data() {
     return {
-      count: 0
+      count: 0,
+      secret: 'my name is dmk'
     }
+  },
+  mounted() {
+    bus.$on('updateSecretMsg', (val) => {
+      console.log('val 33---', val)
+      this.secret = val
+    })
+    this.$store.dispatch('delayCheck')
+    console.log('env ---', process.env.MY_ENV)
   }
 }
 </script>
